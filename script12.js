@@ -1,19 +1,25 @@
-const inputfield = document.getElementById('inputspot');
-const timer = document.getElementById('')
+const inputfield = document.getElementById('typingspot');
+const timer = document.getElementById('timer');
+var starttimervalue = 60;
 
 const words = ["help", "socket", "snake", "python", "apple", "hello", "what", "they", "exquisite"];
-var starttimervalue  = 60;
 
 console.log("alive");
 
 const textfield = () => {
     console.log("true");
     const textfieldvalue = inputfield.value.toLowerCase();
+    console.log(textfieldvalue);
     if (textfieldvalue === "start") {
         start();
         console.log("gamehasstarted");
     }
+    else {
+        console.log("start hasn't been typed yet");
+    }
 }
+
+inputfield.addEventListener('input', textfield);
 
 window.onbeforeunload = () => {
     if (localStorage != null) {
@@ -22,14 +28,12 @@ window.onbeforeunload = () => {
     }
 }
 
-// Note: It is important to eventually encrypt thsis value in the future, so people won't be able to
-// Create a false highscore through the console and localStorage. 
-
 function starttimer() {
-    for (let i = 0; i < startimervalue; i++) {
-        setTimeout(function () {
-            starttimervalue - 1;
-            timer.innerHTML = starttsimervalue;
+    timer.innerHTML = starttimervalue;
+    for (let i = 0; i < 1; i++) {
+        setInterval(function () {
+            starttimervalue--
+            timer.innerHTML = starttimervalue;
         }, 1000)
     }
  }
